@@ -1,0 +1,94 @@
+<!DOCTYPE>
+<html lang="ja">
+   <head>
+       <link rel="stylesheet" href="app.css">
+       <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+       <title>！</title>
+   </head>
+   
+   <body>
+      
+       <div id="main">
+           <h1>お気に入りの写真はどれかな？！</h1>
+           
+           <section class="section">
+             <div class="col-6">
+              <div class="tumnbnail tumnbnail-1">
+                  <img class="img1" src="img/1.jpg" alt="">
+            　 </div>
+                  
+                   <i id="1" class="fa fa-heart-o js-click-animation fav" aria-hidden="true"></i>
+                   <i class="fa fa-heart js-click-animation1 fav2" aria-hidden="true"></i>
+                   <p class="js-count1">0</p>
+                   
+                  
+             </div> 
+             <div class="col-6">
+              <div class="tumnbnail tumnbnail-2">
+                  <img class="img2" src="img/2.jpg" alt="">
+            　 </div>
+                   <i id="2" class="fa fa-heart-o js-click-animation fav" aria-hidden="true"></i>
+                   <i class="fa fa-heart js-click-animation2 fav2" aria-hidden="true"></i>
+                   <p class="js-count2">0</p>
+                   
+             </div>
+             <div class="col-6">
+              <div class="tumnbnail tumnbnail-3">
+                  <img class="img3" src="img/3.jpg" alt="">
+            　 </div>
+                   <i id="3" class="fa fa-heart-o js-click-animation fav" aria-hidden="true"></i>
+                   <i class="fa fa-heart js-click-animation3 fav2" aria-hidden="true"></i>
+                   <p class="js-count3">0</p>
+             </div>
+           </section>                       
+           
+       </div>
+       
+<!--
+       <div class="modal js-show-modal-target">
+           <img src="img/2.jpg" alt=""> 
+           <button class="btn js-hide-modal">閉じる</button>
+       </div> 
+       <div class="cover js-show-modal-cover"></div>
+-->
+       
+      <script src="https://code.jquery.com/jquery-3.2.1.min.js"
+          integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+          crossorigin="anonymous"></script>
+      
+      <script>
+          $(function () {
+//              $('img').on('click',function(){
+//                  var id = $(this).attr('id');
+//                  
+//                  $('.js-show-modal-target').show();
+//                  $('.js-show-modal-cover').show();
+//              })
+              
+              $('.js-click-animation').on('click',function(){
+                  var $this = $(this);
+                  //押されたハートのID取得
+                  var id = $this.attr('id');
+                  var $that = $('#'+id); 
+                  //いいねの数
+                  var num = $('.js-count'+id).val();
+                  
+                  $that.toggleClass('fa-heart-o');
+                  $that.toggleClass('fa-heart');
+                  $that.toggleClass('is-active');
+                  $('.js-click-animation'+id).toggleClass('is-active');
+                  
+                  //is-activeだったらカウント増やす
+                  if($that.hasClass('is-active')){
+                      num++;
+                     }else{
+                      num = num--;
+                     }
+                  $('.js-count'+id).html(num);
+              });
+          });
+       </script>
+       
+   </body>
+    
+</html>
